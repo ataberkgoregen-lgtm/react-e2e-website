@@ -7,7 +7,6 @@ const Form = styled.div`
   flex-direction: column;
   width: 30%;
   margin: auto;
-  background-color: grey;
 `;
 
 const Image = styled.div`
@@ -23,9 +22,10 @@ const Image = styled.div`
 `;
 
 const Wrap = styled.div`
-  height: 100vh;
+  height: 100%;
   width: 100%;
 `;
+
 export default function Pizzaform(props) {
   const { changePage } = props;
 
@@ -97,7 +97,7 @@ export default function Pizzaform(props) {
         </div>
       </Image>
       <Form>
-        <div style={{ padding: "1.4rem 0", backgroundColor: "bisque" }}>
+        <div style={{ padding: "1.4rem 0" }}>
           <h3>Position Absolute Acı Pizza </h3>
         </div>
         <div
@@ -131,7 +131,9 @@ export default function Pizzaform(props) {
           <div
             style={{ display: "flex", flexDirection: "column", gap: "1rem" }}
           >
-            <h3>Boyut Seç</h3>
+            <h3>
+              Boyut Seç <span style={{ color: "red" }}>*</span>
+            </h3>
             <label htmlFor="small">
               <input type="radio" name="size" id="small" />
               Küçük
@@ -146,12 +148,238 @@ export default function Pizzaform(props) {
             </label>
           </div>
           <div>
-            <h3>Hamur Kalınlığı</h3>
+            <h3>
+              Hamur Seç <span style={{ color: "red" }}>*</span>
+            </h3>
             <select style={{ marginTop: "1rem" }}>
               <option value="someOption">Hamur Kalınlığı</option>
               <option value="otherOption">Kalın Hamur</option>
               <option value="otherOption">İnce Hamur</option>
             </select>
+          </div>
+        </div>
+        <div style={{ paddingTop: "1rem" }}>
+          <div>
+            <h3>Ek Malzemeler</h3>
+            <p style={{ paddingTop: "0.5rem" }}>
+              En Fazla 10 malzeme seçebilirsiniz. 5₺
+            </p>
+          </div>
+          <div
+            style={{
+              paddingTop: "0.6rem",
+              display: "flex",
+              flexDirection: "row",
+              gap: "0.5rem",
+              width: "100%",
+            }}
+          >
+            <div
+              style={{
+                paddingTop: "0.6rem",
+                display: "flex",
+                flexDirection: "column",
+                gap: "0.5rem",
+              }}
+            >
+              <div>
+                <input type="checkbox" id="pepperoni" name="matterial" />
+                <label style={{ paddingLeft: "0.6rem" }} htmlFor="pepperoni">
+                  Pepperoni
+                </label>
+              </div>
+              <div>
+                <input type="checkbox" id="sosis" name="matterial" />
+                <label style={{ paddingLeft: "0.6rem" }} htmlFor="sosis">
+                  Sosis
+                </label>
+              </div>
+              <div>
+                <input type="checkbox" id="jambon" name="matterial" />
+                <label style={{ paddingLeft: "0.6rem" }} htmlFor="jambon">
+                  Kanada Jambonu
+                </label>
+              </div>
+              <div>
+                <input type="checkbox" id="tavuk" name="matterial" />
+                <label style={{ paddingLeft: "0.6rem" }} htmlFor="tavuk">
+                  Tavuk Izgara
+                </label>
+              </div>
+              <div>
+                <input type="checkbox" id="soğan" name="matterial" />
+                <label style={{ paddingLeft: "0.6rem" }} htmlFor="soğan">
+                  Soğan
+                </label>
+              </div>
+            </div>
+            <div
+              style={{
+                paddingTop: "0.6rem",
+                display: "flex",
+                flexDirection: "column",
+                gap: "0.5rem",
+              }}
+            >
+              <div>
+                <input type="checkbox" id="domates" name="matterial" />
+                <label style={{ paddingLeft: "0.6rem" }} htmlFor="domates">
+                  Domates
+                </label>
+              </div>
+              <div>
+                <input type="checkbox" id="mısır" name="matterial" />
+                <label style={{ paddingLeft: "0.6rem" }} htmlFor="mısır">
+                  Mısır
+                </label>
+              </div>
+              <div>
+                <input type="checkbox" id="sucuk" name="matterial" />
+                <label style={{ paddingLeft: "0.6rem" }} htmlFor="sucuk">
+                  Sucuk
+                </label>
+              </div>
+              <div>
+                <input type="checkbox" id="jalepeno" name="matterial" />
+                <label style={{ paddingLeft: "0.6rem" }} htmlFor="jalepeno">
+                  Jalepeno
+                </label>
+              </div>
+              <div>
+                <input type="checkbox" id="sarımsak" name="matterial" />
+                <label style={{ paddingLeft: "0.6rem" }} htmlFor="sarımsak">
+                  Sarımsak
+                </label>
+              </div>
+            </div>
+            <div
+              style={{
+                paddingTop: "0.6rem",
+                display: "flex",
+                flexDirection: "column",
+                gap: "0.5rem",
+              }}
+            >
+              <div>
+                <input type="checkbox" id="biber" name="matterial" />
+                <label style={{ paddingLeft: "0.6rem" }} htmlFor="biber">
+                  Biber
+                </label>
+              </div>
+              <div>
+                <input type="checkbox" id="pastırma" name="matterial" />
+                <label style={{ paddingLeft: "0.6rem" }} htmlFor="pastırma">
+                  Pastırma
+                </label>
+              </div>
+              <div>
+                <input type="checkbox" id="ananas" name="matterial" />
+                <label style={{ paddingLeft: "0.6rem" }} htmlFor="ananas">
+                  Ananas
+                </label>
+              </div>
+              <div>
+                <input type="checkbox" id="kabak" name="matterial" />
+                <label style={{ paddingLeft: "0.6rem" }} htmlFor="kabak">
+                  Kabak
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div style={{ paddingTop: "1rem" }}>
+          <div
+            style={{ display: "flex", flexDirection: "column", gap: "0.6rem" }}
+          >
+            <label htmlFor="comment" style={{ fontWeight: "bold" }}>
+              Sipariş Notu
+            </label>
+            <input
+              id="comment"
+              type="textarea"
+              style={{
+                width: "100%",
+                border: "1px solid grey",
+                borderRadius: "0.3rem",
+                height: "45px",
+              }}
+              placeholder="   Siparişine eklemek istediğin bir not var mı?"
+            />
+          </div>
+        </div>
+
+        <div
+          style={{
+            width: "100%",
+          }}
+        >
+          <span
+            style={{
+              borderBottom: "0.6px solid grey",
+              width: "100%",
+              display: "block",
+              marginTop: "1rem",
+            }}
+          ></span>
+        </div>
+        <div
+          style={{
+            paddingTop: "1.5rem",
+            display: "flex",
+            flexDirection: "row",
+            justifyContent: "center",
+            paddingBottom: "100px",
+          }}
+        >
+          <div>
+            <button style={{ backgroundColor: "#FDC913" }}>-</button>
+            <span
+              style={{
+                padding: "0.5rem 1rem",
+                border: "1px solid grey",
+                borderRadius: "4px",
+              }}
+            >
+              1
+            </span>
+            <button style={{ backgroundColor: "#FDC913" }}>+</button>
+          </div>
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              gap: "0.3rem",
+              border: "1px solid grey",
+              borderRadius: "0.5rem",
+            }}
+          >
+            <div style={{ padding: "20px" }}>
+              <h3>Sipariş Toplamı </h3>
+              <p
+                style={{
+                  display: "flex",
+                  flexDirection: "row",
+                  justifyContent: "space-between",
+                }}
+              >
+                Seçimler <span>15 tl</span>
+              </p>
+              <p
+                style={{
+                  display: "flex",
+                  flexDirection: "row",
+                  justifyContent: "space-between",
+                }}
+              >
+                Toplam <span>20 tl</span>
+              </p>
+            </div>
+
+            <div>
+              <button style={{ backgroundColor: "#FDC913", width: "100%" }}>
+                Sipariş Ver
+              </button>
+            </div>
           </div>
         </div>
       </Form>
