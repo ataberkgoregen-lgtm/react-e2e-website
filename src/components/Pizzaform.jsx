@@ -1,5 +1,9 @@
 import logo from "/src/assets/iteration-1/logo.svg";
 import styled from "styled-components";
+import Size from "./Size";
+import Matterial from "./Matterial";
+import { useState } from "react";
+import { use } from "react";
 
 const Form = styled.div`
   margin-top: 1rem;
@@ -26,8 +30,32 @@ const Wrap = styled.div`
   width: 100%;
 `;
 
+const initialForm = {
+  size: "",
+  pastryTypetype: "",
+  matterial: [],
+};
+
 export default function Pizzaform(props) {
   const { changePage } = props;
+  const [pizzaInfo, setPizzaInfo] = useState(initialForm);
+  const [size, setSize] = useState("");
+  const [pastryType, setPastryType] = useState("");
+  const [malzeme, setMalzeme] = useState("");
+
+  function changeHandler(event) {
+    const { value, name } = event.target;
+
+    if (name == "size" && value) {
+      setSize(value);
+      setPizzaInfo({ ...pizzaInfo, [name]: value });
+    }
+
+    if (name == "pastrytype" && value) {
+      setPastryType(value);
+      setPizzaInfo({ ...pizzaInfo, [name]: value });
+    }
+  }
 
   function clickHandler() {
     changePage("header");
@@ -96,7 +124,7 @@ export default function Pizzaform(props) {
           </a>
         </div>
       </Image>
-      <Form>
+      <Form name="size">
         <div style={{ padding: "1.4rem 0" }}>
           <h3>Position Absolute Acı Pizza </h3>
         </div>
@@ -125,168 +153,11 @@ export default function Pizzaform(props) {
             denir.
           </p>
         </div>
-        <div
-          style={{ paddingTop: "1rem", display: "flex", flexDirection: "row" }}
-        >
-          <div
-            style={{ display: "flex", flexDirection: "column", gap: "1rem" }}
-          >
-            <h3>
-              Boyut Seç <span style={{ color: "red" }}>*</span>
-            </h3>
-            <label htmlFor="small">
-              <input type="radio" name="size" id="small" />
-              Küçük
-            </label>
-            <label htmlFor="medium">
-              <input type="radio" name="size" id="medium" />
-              Orta
-            </label>
-            <label htmlFor="large">
-              <input type="radio" name="size" id="large" />
-              Büyük
-            </label>
-          </div>
-          <div>
-            <h3>
-              Hamur Seç <span style={{ color: "red" }}>*</span>
-            </h3>
-            <select style={{ marginTop: "1rem" }}>
-              <option value="someOption">Hamur Kalınlığı</option>
-              <option value="otherOption">Kalın Hamur</option>
-              <option value="otherOption">İnce Hamur</option>
-            </select>
-          </div>
-        </div>
-        <div style={{ paddingTop: "1rem" }}>
-          <div>
-            <h3>Ek Malzemeler</h3>
-            <p style={{ paddingTop: "0.5rem" }}>
-              En Fazla 10 malzeme seçebilirsiniz. 5₺
-            </p>
-          </div>
-          <div
-            style={{
-              paddingTop: "0.6rem",
-              display: "flex",
-              flexDirection: "row",
-              gap: "0.5rem",
-              width: "100%",
-            }}
-          >
-            <div
-              style={{
-                paddingTop: "0.6rem",
-                display: "flex",
-                flexDirection: "column",
-                gap: "0.5rem",
-              }}
-            >
-              <div>
-                <input type="checkbox" id="pepperoni" name="matterial" />
-                <label style={{ paddingLeft: "0.6rem" }} htmlFor="pepperoni">
-                  Pepperoni
-                </label>
-              </div>
-              <div>
-                <input type="checkbox" id="sosis" name="matterial" />
-                <label style={{ paddingLeft: "0.6rem" }} htmlFor="sosis">
-                  Sosis
-                </label>
-              </div>
-              <div>
-                <input type="checkbox" id="jambon" name="matterial" />
-                <label style={{ paddingLeft: "0.6rem" }} htmlFor="jambon">
-                  Kanada Jambonu
-                </label>
-              </div>
-              <div>
-                <input type="checkbox" id="tavuk" name="matterial" />
-                <label style={{ paddingLeft: "0.6rem" }} htmlFor="tavuk">
-                  Tavuk Izgara
-                </label>
-              </div>
-              <div>
-                <input type="checkbox" id="soğan" name="matterial" />
-                <label style={{ paddingLeft: "0.6rem" }} htmlFor="soğan">
-                  Soğan
-                </label>
-              </div>
-            </div>
-            <div
-              style={{
-                paddingTop: "0.6rem",
-                display: "flex",
-                flexDirection: "column",
-                gap: "0.5rem",
-              }}
-            >
-              <div>
-                <input type="checkbox" id="domates" name="matterial" />
-                <label style={{ paddingLeft: "0.6rem" }} htmlFor="domates">
-                  Domates
-                </label>
-              </div>
-              <div>
-                <input type="checkbox" id="mısır" name="matterial" />
-                <label style={{ paddingLeft: "0.6rem" }} htmlFor="mısır">
-                  Mısır
-                </label>
-              </div>
-              <div>
-                <input type="checkbox" id="sucuk" name="matterial" />
-                <label style={{ paddingLeft: "0.6rem" }} htmlFor="sucuk">
-                  Sucuk
-                </label>
-              </div>
-              <div>
-                <input type="checkbox" id="jalepeno" name="matterial" />
-                <label style={{ paddingLeft: "0.6rem" }} htmlFor="jalepeno">
-                  Jalepeno
-                </label>
-              </div>
-              <div>
-                <input type="checkbox" id="sarımsak" name="matterial" />
-                <label style={{ paddingLeft: "0.6rem" }} htmlFor="sarımsak">
-                  Sarımsak
-                </label>
-              </div>
-            </div>
-            <div
-              style={{
-                paddingTop: "0.6rem",
-                display: "flex",
-                flexDirection: "column",
-                gap: "0.5rem",
-              }}
-            >
-              <div>
-                <input type="checkbox" id="biber" name="matterial" />
-                <label style={{ paddingLeft: "0.6rem" }} htmlFor="biber">
-                  Biber
-                </label>
-              </div>
-              <div>
-                <input type="checkbox" id="pastırma" name="matterial" />
-                <label style={{ paddingLeft: "0.6rem" }} htmlFor="pastırma">
-                  Pastırma
-                </label>
-              </div>
-              <div>
-                <input type="checkbox" id="ananas" name="matterial" />
-                <label style={{ paddingLeft: "0.6rem" }} htmlFor="ananas">
-                  Ananas
-                </label>
-              </div>
-              <div>
-                <input type="checkbox" id="kabak" name="matterial" />
-                <label style={{ paddingLeft: "0.6rem" }} htmlFor="kabak">
-                  Kabak
-                </label>
-              </div>
-            </div>
-          </div>
-        </div>
+
+        <Size changeHandler={changeHandler}></Size>
+
+        <Matterial></Matterial>
+
         <div style={{ paddingTop: "1rem" }}>
           <div
             style={{ display: "flex", flexDirection: "column", gap: "0.6rem" }}
@@ -328,7 +199,7 @@ export default function Pizzaform(props) {
             display: "flex",
             flexDirection: "row",
             justifyContent: "center",
-            paddingBottom: "100px",
+            paddingBottom: "50px",
           }}
         >
           <div>
@@ -350,7 +221,7 @@ export default function Pizzaform(props) {
               flexDirection: "column",
               gap: "0.3rem",
               border: "1px solid grey",
-              borderRadius: "0.5rem",
+              borderRadius: "0.6rem",
             }}
           >
             <div style={{ padding: "20px" }}>
