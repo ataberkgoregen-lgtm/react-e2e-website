@@ -1,5 +1,5 @@
 export default function Piece(props) {
-  const { pizzaInfo, clickEvent, pricewilladd, pizzatotalpr } = props;
+  const { pizzaInfo, clickEvent, pricewilladd, pizzatotalpr, isvalid } = props;
   return (
     <div
       style={{
@@ -15,6 +15,7 @@ export default function Piece(props) {
           name="reduce"
           style={{ backgroundColor: "#FDC913" }}
           onClick={clickEvent}
+          type="button"
         >
           -
         </button>
@@ -31,6 +32,7 @@ export default function Piece(props) {
           name="increase"
           style={{ backgroundColor: "#FDC913" }}
           onClick={clickEvent}
+          type="button"
         >
           +
         </button>
@@ -73,6 +75,7 @@ export default function Piece(props) {
           <button
             type="submit"
             style={{ backgroundColor: "#FDC913", width: "100%" }}
+            disabled={isvalid}
           >
             Sipariş Ver
           </button>

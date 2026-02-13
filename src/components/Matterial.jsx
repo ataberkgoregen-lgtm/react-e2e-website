@@ -222,6 +222,11 @@ export default function Matterial(props) {
           </div>
         </div>
       </div>
+      {(pizzaInfo.matterial.length < 4 || pizzaInfo.matterial.length > 10) && (
+        <span style={{ color: "red" }}>
+          * 4'ten fazla ve 10'az malzeme seçimi yapmalısınız.
+        </span>
+      )}
     </div>
   );
 }

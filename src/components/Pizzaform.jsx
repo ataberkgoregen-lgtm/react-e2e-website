@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 import logo from "/src/assets/iteration-1/logo.svg";
 import styled from "styled-components";
@@ -42,11 +42,25 @@ const initialForm = {
   comment: "",
   piece: 1,
   price: 85,
+  totalprice: 0,
 };
 
 export default function Pizzaform(props) {
   const { changePage } = props;
+  const [isvalid, setIsValid] = useState(true);
   const [pizzaInfo, setPizzaInfo] = useState(initialForm);
+
+  useEffect(() => {
+    const isMaterialValid =
+      pizzaInfo.matterial.length > 3 && pizzaInfo.matterial.length <= 10;
+    const isSizeSelected = pizzaInfo.size !== "";
+    const isPastrySelected = pizzaInfo.pastryType !== "Hamur Kalınlığı";
+    if (isMaterialValid && isSizeSelected && isPastrySelected) {
+      setIsValid(false);
+    } else {
+      setIsValid(true);
+    }
+  }, [pizzaInfo.matterial]);
 
   const pricewilladd = pizzaInfo.matterial.length;
   console.log(pricewilladd);
@@ -69,6 +83,7 @@ export default function Pizzaform(props) {
           : prev[name].filter((item) => item !== value), // çıkarma işlemi
       }));
     }
+
     // fonksiyon içerisinde kullanmak, verinin sıfırlanmasını önler. Kullanım şekli bu. !!
     // fonksiyon olmadan, çıkarma işlemi filtre ile yapılabilir.
     //    if (checked) {
@@ -95,7 +110,7 @@ export default function Pizzaform(props) {
   function clickEvent(event) {
     const { name } = event.target;
     let newVal = 0;
-    if (name == "reduce") {
+    if (name == "reduce" && pizzaInfo.piece > 0) {
       newVal = pizzaInfo.piece - 1;
       setPizzaInfo({ ...pizzaInfo, ["piece"]: newVal });
     } else if (name == "increase") {
@@ -204,6 +219,7 @@ export default function Pizzaform(props) {
           clickEvent={clickEvent}
           pricewilladd={pricewilladd}
           pizzatotalpr={pizzaInfo.price}
+          isvalid={isvalid}
         ></Piece>
       </Form>
     </Wrap>
