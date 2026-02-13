@@ -70,7 +70,10 @@ export default function Piece(props) {
         </div>
 
         <div>
-          <button style={{ backgroundColor: "#FDC913", width: "100%" }}>
+          <button
+            type="submit"
+            style={{ backgroundColor: "#FDC913", width: "100%" }}
+          >
             Sipariş Ver
           </button>
         </div>

@@ -6,6 +6,7 @@ import logo from "./assets/iteration-1/logo.svg";
 import homeBanner from "./assets/iteration-1/home-banner.png";
 import Header from "./components/Header";
 import Pizzaform from "./components/Pizzaform";
+import Success from "./components/Success";
 
 function App() {
   const [activepage, setactivePage] = useState("header");
@@ -20,6 +21,8 @@ function App() {
         return <Header changePage={changePage}></Header>;
       case "pizzaform":
         return <Pizzaform changePage={changePage}></Pizzaform>;
+      case "success":
+        return <Success changePage={changePage}></Success>;
     }
   }
   return <>{showePage()}</>;

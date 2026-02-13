@@ -9,7 +9,7 @@ import Comment from "./Comment";
 import Piece from "./Piece";
 import Title from "./Title";
 
-const Form = styled.div`
+const Form = styled.form`
   margin-top: 1rem;
   display: flex;
   flex-direction: column;
@@ -85,6 +85,11 @@ export default function Pizzaform(props) {
     if (name == "commenttext") {
       setPizzaInfo({ ...pizzaInfo, [name]: value });
     }
+  }
+
+  function submitHandler(event) {
+    event.preventDefault();
+    changePage("success");
   }
 
   function clickEvent(event) {
@@ -167,7 +172,7 @@ export default function Pizzaform(props) {
           </a>
         </div>
       </Image>
-      <Form name="size">
+      <Form name="size" onSubmit={submitHandler}>
         <Title></Title>
 
         <Size changeHandler={changeHandler} pizzaInfo={pizzaInfo}></Size>
