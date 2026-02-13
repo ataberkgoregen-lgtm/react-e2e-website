@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 export default function Size(props) {
-  const { changeHandler } = props;
+  const { changeHandler, pizzaInfo } = props;
 
   return (
     <div style={{ paddingTop: "1rem", display: "flex", flexDirection: "row" }}>
@@ -39,20 +39,26 @@ export default function Size(props) {
           />
           Büyük
         </label>
+        {pizzaInfo.size === "" && (
+          <p style={{ color: "red" }}>Boyut seçmediniz*</p>
+        )}
       </div>
       <div>
         <h3>
           Hamur Seç <span style={{ color: "red" }}>*</span>
         </h3>
         <select
-          name="pastrytype"
+          name="pastryType"
           style={{ marginTop: "1rem" }}
           onChange={changeHandler}
         >
-          <option value="someOption">Hamur Kalınlığı</option>
+          <option value="Hamur Kalınlığı">Hamur Kalınlığı</option>
           <option value="thick">Kalın Hamur</option>
           <option value="thin">İnce Hamur</option>
         </select>
+        {pizzaInfo.pastryType === "Hamur Kalınlığı" && (
+          <p style={{ color: "red" }}>Hamur tipi seçmediniz*</p>
+        )}
       </div>
     </div>
   );

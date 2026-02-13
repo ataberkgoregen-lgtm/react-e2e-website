@@ -1,15 +1,19 @@
+import { useState } from "react";
+
 import logo from "/src/assets/iteration-1/logo.svg";
 import styled from "styled-components";
 import Size from "./Size";
 import Matterial from "./Matterial";
-import { useState } from "react";
-import { use } from "react";
+
+import Comment from "./Comment";
+import Piece from "./Piece";
+import Title from "./Title";
 
 const Form = styled.div`
   margin-top: 1rem;
   display: flex;
   flex-direction: column;
-  width: 30%;
+  width: 350px;
   margin: auto;
 `;
 
@@ -28,35 +32,74 @@ const Image = styled.div`
 const Wrap = styled.div`
   height: 100%;
   width: 100%;
+  box-sizing: border-box;
 `;
 
 const initialForm = {
   size: "",
-  pastryTypetype: "",
+  pastryType: "Hamur Kalınlığı",
   matterial: [],
+  comment: "",
+  piece: 1,
+  price: 85,
 };
 
 export default function Pizzaform(props) {
   const { changePage } = props;
   const [pizzaInfo, setPizzaInfo] = useState(initialForm);
-  const [size, setSize] = useState("");
-  const [pastryType, setPastryType] = useState("");
-  const [malzeme, setMalzeme] = useState("");
 
+  const pricewilladd = pizzaInfo.matterial.length;
+  console.log(pricewilladd);
   function changeHandler(event) {
-    const { value, name } = event.target;
+    const { value, name, type, checked } = event.target;
 
     if (name == "size" && value) {
-      setSize(value);
       setPizzaInfo({ ...pizzaInfo, [name]: value });
     }
 
-    if (name == "pastrytype" && value) {
-      setPastryType(value);
+    if (name == "pastryType" && value) {
+      setPizzaInfo({ ...pizzaInfo, [name]: value });
+    }
+
+    if (type == "checkbox" && value) {
+      setPizzaInfo((prev) => ({
+        ...prev,
+        [name]: checked
+          ? [...prev[name], value] // ekleme
+          : prev[name].filter((item) => item !== value), // çıkarma işlemi
+      }));
+    }
+    // fonksiyon içerisinde kullanmak, verinin sıfırlanmasını önler. Kullanım şekli bu. !!
+    // fonksiyon olmadan, çıkarma işlemi filtre ile yapılabilir.
+    //    if (checked) {
+    //   setPizzaInfo({
+    //     ...pizzaInfo,
+    //     [name]: [...pizzaInfo[name], value]
+    //   });
+    // } else {
+    //   setPizzaInfo({
+    //     ...pizzaInfo,
+    //     [name]: pizzaInfo[name].filter(item => item !== value)
+    //   });
+
+    if (name == "commenttext") {
       setPizzaInfo({ ...pizzaInfo, [name]: value });
     }
   }
 
+  function clickEvent(event) {
+    const { name } = event.target;
+    let newVal = 0;
+    if (name == "reduce") {
+      newVal = pizzaInfo.piece - 1;
+      setPizzaInfo({ ...pizzaInfo, ["piece"]: newVal });
+    } else if (name == "increase") {
+      newVal = pizzaInfo.piece + 1;
+      setPizzaInfo({ ...pizzaInfo, ["piece"]: newVal });
+    }
+  }
+
+  console.log(pizzaInfo);
   function clickHandler() {
     changePage("header");
   }
@@ -67,7 +110,7 @@ export default function Pizzaform(props) {
         <div
           style={{
             height: "70%",
-            width: "30%",
+            width: "350px",
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
@@ -83,7 +126,7 @@ export default function Pizzaform(props) {
             textDecoration: "none",
             color: "#5F5F5F",
             height: "30%",
-            width: "30%",
+            width: "350px",
             paddingBottom: "1rem",
             paddingLeft: "0",
           }}
@@ -125,134 +168,38 @@ export default function Pizzaform(props) {
         </div>
       </Image>
       <Form name="size">
-        <div style={{ padding: "1.4rem 0" }}>
-          <h3>Position Absolute Acı Pizza </h3>
-        </div>
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "space-between",
-            alignItems: "center",
-            paddingTop: "1rem",
-          }}
-        >
-          <h3 style={{ fontSize: "2rem" }}>85.50 ₺</h3>
-          <span style={{ display: "flex", gap: "5rem" }}>
-            <p>4.9</p>
-            <p>(200)</p>
-          </span>
-        </div>
-        <div style={{ paddingTop: "1rem", textAlign: "start" }}>
-          <p>
-            Frontent Dev olarak hala position:absolute kullanıyorsan bu çok acı
-            pizza tam sana göre. Pizza, domates, peynir ve genellikle çeşitli
-            diğer malzemelerle kaplanmış, daha sonra geleneksel olarak odun
-            ateşinde bir fırında yüksek sıcaklıkta pişirilen, genellikle
-            yuvarlak, düzleştirilmiş mayalı buğday bazlı hamurdan oluşan İtalyan
-            kökenli lezzetli bir yemektir. . Küçük bir pizzaya bazen pizzetta
-            denir.
-          </p>
-        </div>
+        <Title></Title>
 
-        <Size changeHandler={changeHandler}></Size>
+        <Size changeHandler={changeHandler} pizzaInfo={pizzaInfo}></Size>
 
-        <Matterial></Matterial>
+        <Matterial
+          changeHandler={changeHandler}
+          pizzaInfo={pizzaInfo}
+        ></Matterial>
 
-        <div style={{ paddingTop: "1rem" }}>
-          <div
-            style={{ display: "flex", flexDirection: "column", gap: "0.6rem" }}
-          >
-            <label htmlFor="comment" style={{ fontWeight: "bold" }}>
-              Sipariş Notu
-            </label>
-            <input
-              id="comment"
-              type="textarea"
-              style={{
-                width: "100%",
-                border: "1px solid grey",
-                borderRadius: "0.3rem",
-                height: "45px",
-              }}
-              placeholder="   Siparişine eklemek istediğin bir not var mı?"
-            />
-          </div>
-        </div>
+        <Comment changeHandler={changeHandler}></Comment>
 
         <div
           style={{
-            width: "100%",
+            width: "350px",
           }}
         >
           <span
             style={{
               borderBottom: "0.6px solid grey",
-              width: "100%",
+              width: "350px",
               display: "block",
               marginTop: "1rem",
             }}
           ></span>
         </div>
-        <div
-          style={{
-            paddingTop: "1.5rem",
-            display: "flex",
-            flexDirection: "row",
-            justifyContent: "center",
-            paddingBottom: "50px",
-          }}
-        >
-          <div>
-            <button style={{ backgroundColor: "#FDC913" }}>-</button>
-            <span
-              style={{
-                padding: "0.5rem 1rem",
-                border: "1px solid grey",
-                borderRadius: "4px",
-              }}
-            >
-              1
-            </span>
-            <button style={{ backgroundColor: "#FDC913" }}>+</button>
-          </div>
-          <div
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              gap: "0.3rem",
-              border: "1px solid grey",
-              borderRadius: "0.6rem",
-            }}
-          >
-            <div style={{ padding: "20px" }}>
-              <h3>Sipariş Toplamı </h3>
-              <p
-                style={{
-                  display: "flex",
-                  flexDirection: "row",
-                  justifyContent: "space-between",
-                }}
-              >
-                Seçimler <span>15 tl</span>
-              </p>
-              <p
-                style={{
-                  display: "flex",
-                  flexDirection: "row",
-                  justifyContent: "space-between",
-                }}
-              >
-                Toplam <span>20 tl</span>
-              </p>
-            </div>
 
-            <div>
-              <button style={{ backgroundColor: "#FDC913", width: "100%" }}>
-                Sipariş Ver
-              </button>
-            </div>
-          </div>
-        </div>
+        <Piece
+          pizzaInfo={pizzaInfo}
+          clickEvent={clickEvent}
+          pricewilladd={pricewilladd}
+          pizzatotalpr={pizzaInfo.price}
+        ></Piece>
       </Form>
     </Wrap>
   );
