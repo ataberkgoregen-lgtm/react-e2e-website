@@ -18,7 +18,9 @@ const Wrapper = styled.div`
   flex-direction: column;
 `;
 
-export default function Success() {
+export default function Success(props) {
+  const { pizzaInfo, setPizzaInfo } = props;
+  const name = pizzaInfo.pizzaname;
   return (
     <Wrapper>
       <Image>
@@ -39,14 +41,86 @@ export default function Success() {
         style={{
           display: "flex",
           flexDirection: "column",
-          justifyContent: "center",
           alignItems: "center",
-          height: "calc(100% - 30%)",
           color: "white",
+          width: "50%",
+          margin: "3rem auto",
         }}
       >
-        <h1>TEBRIKLER!</h1>
-        <h1>SİPARİŞİNİZ ALINDI!</h1>
+        <p>Lezzetin Yolda</p>
+        <h1>SİPARİŞ ALINDI</h1>
+      </div>
+      <span
+        style={{
+          borderBottom: "1px solid white",
+          width: "50%",
+          margin: "0 auto",
+        }}
+      ></span>
+      <div
+        style={{
+          width: "50%",
+          color: "white",
+          display: "flex",
+          justifyContent: "center",
+          alignContent: "center",
+          border: "1px solid black",
+          margin: "0 auto",
+          textAlign: "center",
+          flexDirection: "column",
+        }}
+      >
+        <p>{pizzaInfo.pizzaname}</p>
+
+        <p>Boyut: {pizzaInfo.size}</p>
+        <p>Hamur: {pizzaInfo.pastryType}</p>
+        <p>Ek Malzemeler: {pizzaInfo.matterial.join(", ")}</p>
+      </div>
+
+      <div
+        style={{
+          marginTop: "3rem",
+          width: "25%",
+          color: "white",
+          display: "flex",
+          justifyContent: "center",
+          alignContent: "center",
+          border: "1px solid black",
+          margin: "0 auto",
+          textAlign: "center",
+          flexDirection: "column",
+        }}
+      >
+        <div
+          style={{
+            padding: "20px",
+            display: "flex",
+            justifyContent: "center",
+            flexDirection: "column",
+            alignItems: "center",
+            gap: "0.6rem",
+          }}
+        >
+          <h3>Sipariş Toplamı </h3>
+          <p
+            style={{
+              display: "flex",
+              flexDirection: "row",
+              color: "white",
+            }}
+          >
+            Seçimler: {pizzaInfo.addedprice} tl
+          </p>
+          <p
+            style={{
+              display: "flex",
+              flexDirection: "row",
+              color: "white",
+            }}
+          >
+            Toplam {pizzaInfo.totalprice} tl
+          </p>
+        </div>
       </div>
     </Wrapper>
   );
