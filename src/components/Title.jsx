@@ -1,7 +1,13 @@
 export default function Title() {
   return (
     <>
-      <div style={{ padding: "1.4rem 0" }}>
+      <div
+        style={{
+          padding: "1.4rem 0",
+          width: "40%",
+          margin: "auto",
+        }}
+      >
         <h3>Position Absolute Acı Pizza </h3>
       </div>
       <div
@@ -10,6 +16,9 @@ export default function Title() {
           justifyContent: "space-between",
           alignItems: "center",
           paddingTop: "1rem",
+
+          width: "40%",
+          margin: "auto",
         }}
       >
         <h3 style={{ fontSize: "2rem" }}>85.50 ₺</h3>
@@ -18,7 +27,15 @@ export default function Title() {
           <p>(200)</p>
         </span>
       </div>
-      <div style={{ paddingTop: "1rem", textAlign: "start", width: "350px" }}>
+      <div
+        style={{
+          paddingTop: "1rem",
+          textAlign: "start",
+          width: "40%",
+          margin: "auto",
+          paddingBottom: "1rem",
+        }}
+      >
         <p>
           Frontent Dev olarak hala position:absolute kullanıyorsan bu çok acı
           pizza tam sana göre. Pizza, domates, peynir ve genellikle çeşitli

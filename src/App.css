@@ -8,6 +8,8 @@
 
 body {
     background-color: #FAF7F2;
+    display: flex;
+    flex-direction: column;
     
 }
 
@@ -64,4 +66,557 @@ h2 {
     border: 1px solid red;
     color: red;
     
+}
+
+
+.main-section {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-content: center;
+    margin: auto;
+    background-color: white;
+}
+
+.icons {
+    width: 50%;
+}
+
+.icon-list {
+    display: flex;
+    justify-content: space-around;
+    padding:1rem 0;
+    flex-wrap: wrap;
+}
+
+.icon-list-item{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 1rem;
+    white-space:nowrap;
+}
+.icon-list p {
+    font-family: Barlow;
+    font-weight: 500;
+    font-size: 1.125rem;
+    
+}
+
+.box-model {
+  width: 50%;
+  margin: auto;
+}
+
+.three-box {
+    margin-top: 4rem;
+    display: flex;
+}
+
+.box-1,
+.boxer-1,
+.boxer-2 {
+  background-size: cover;
+  background-position: center;
+  border-radius: 12px;
+  min-width: min-content
+}
+
+/* SOL BÜYÜK KART */
+.box-1 {
+  width: 50%;
+  min-height: 400px;
+  background-image: url("/images/iteration-2-images/cta/kart-1.png");
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 1rem;
+  padding-left: 40px;
+  padding-top: 50px;
+}
+
+.write {
+    padding-left: 5px;
+    padding-top: 15px;
+}
+.box-1 h3 {
+    font-family: Quattrocento;
+    font-size: clamp(3rem, 5vw, 3.85rem);
+    color: white;
+}
+
+
+.box-1 p {
+    font-family: Barlow;
+    color: white;
+    font-size: clamp(0.9rem, 1vw, 2rem);
+    padding-bottom: 20px;
+
+}
+.box-1 .box-btn{
+    background-color: white;
+    width: max-content;
+    padding: 1rem 2rem;
+    border-radius: 2rem;
+    color: red;
+    border: none;
+}
+
+/* SAĞ TARAF */
+.two-box {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding-left: 20px;
+}
+
+.boxer-1,
+.boxer-2 {
+  min-height: 190px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding: 15px;
+  flex-direction: column;
+  gap: 2rem ;
+  padding-left: 20px;
+  padding-top: 40px;
+  
+}
+
+.boxer-1 {
+  background-image: url("/images/iteration-2-images/cta/kart-2.png");
+}
+
+.boxer-1 h3 {
+    font-family: Quattrocento;
+    font-size: clamp(1.1rem, 1.6vw, 2.5rem);
+    color: white;
+    padding-bottom: 20px;
+}
+
+.boxer-1 .boxer-btn{
+    background-color: white;
+    width: max-content;
+    padding: 1rem 2rem;
+    border-radius: 2rem;
+    color: red;
+    border: none;
+}
+
+.boxer-1 {
+    color: white;
+}
+
+.boxer-2 {
+  background-image: url("/images/iteration-2-images/cta/kart-3.png");
+}
+
+.boxer-2 h3 {
+    font-family: Quattrocento;
+    font-size: clamp(1.1rem, 1.6vw, 2.5rem);
+    color: black;
+    padding-bottom: 20px;
+}
+
+.boxer-2 .boxer-btn{
+    background-color: white;
+    width: max-content;
+    padding: 1rem 2rem;
+    border-radius: 2rem;
+    color: red;
+    border: none;
+}
+
+.text {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: auto;
+    align-items: center;
+    margin-top: 3rem;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.text p {
+    color: red;
+    text-align: center;
+    font-family: Satisfy;
+    font-size: clamp(1.4rem, 1.8vw, 2.5rem);
+}
+
+.text h3 {
+    color: black;
+    font-family: Barlow;
+    font-size: clamp(1.6rem, 2vw, 3.5rem);
+    font-weight: 600 ;
+}
+
+
+.items {
+    width: 50%;
+    margin: auto;
+    margin-top: 30px;
+}
+
+
+.item-icon-list {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    list-style: none;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.icon-list-element {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 5px;    
+    justify-content: center;
+    align-content: center;
+    background-color: white;
+    padding: 0.3rem 0.7rem;
+    border-radius: 40px;
+}
+
+.active {
+    background-color: #292929 !important;
+    color: white;
+}
+
+.pizzalar {
+    width: 50%;
+    display: flex;
+    flex-direction: row;
+    margin: auto;
+    justify-content: space-between;
+    margin-top: 30px;
+    margin-bottom: 3rem;
+}
+
+.pizzalar .box {
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    padding: 10px;
+    border-radius: 1rem;
+    width: 32.5%;
+
+}
+
+.h-seperate {
+    margin-top: 20px;
+}
+.size {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 10px;
+    gap: 6rem;
+}
+
+.price {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    
+    margin-bottom: 20px;
+}
+
+
+footer {
+    width: 100%;
+    background-color:#292929;
+    display: flex;
+    flex-direction: column;
+    
+}
+
+.imagen {
+    padding-top: 2rem;
+    width: 50%;
+    margin: 0 auto;
+   
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    color: white;
+}
+
+.titlename {
+    display: flex;
+    margin: auto;
+    justify-content: space-around;
+}
+.foot {
+    display: flex;
+    width: 50%;
+    margin: auto;
+    justify-content: space-between;
+    color: white;
+    text-align: left;
+    align-items: center;
+    gap: 1rem;
+
+}
+
+.foot .iletisim ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.foot .iletisim li {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 0.5rem;
+    
+}
+
+.iletisim {
+    width: 33%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    line-height: 2rem;
+    gap: 1rem;
+    
+}
+
+.iletisim .big{
+    width: 100%;
+    
+}
+
+.sonunda {
+     display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 9rem
+}
+
+
+.menu {
+    width: 50%;
+    padding-left: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items:flex;
+    justify-content:flex-end;
+    gap: 1rem;
+    text-align: left;
+    height: auto;
+}
+
+.menu li {
+    list-style: none;
+}
+
+.menu ul {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+
+.instagram {
+    width: 50%;
+    
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 2rem;
+    height: auto;
+
+}
+
+.instagram .img-par {
+    display: flex;
+    flex-direction: row;
+    
+    width: 100%;
+    flex-wrap: wrap;
+    gap: 5px;
+}    
+
+.instagram .img-par img {
+    width: 30%;
+    
+}    
+
+.bottom {   
+    
+    border-top: 1px solid gray;
+}
+
+.bottom div{
+    color: white;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 50%;
+    margin: auto;
+    padding: 2rem;
+}
+
+@media (max-width: 1000px) {
+
+    body {
+        min-width: 370px;
+    }
+
+    .header {
+        width: 100%;
+    }
+
+   .elements {
+    padding-top: 2rem;
+   }
+
+   .elements .letter {
+    padding: 0;
+   }
+
+   .elements p {
+    display: none;
+   }
+
+   .elements h2 {
+    font-size: 3.8rem !important;
+   }
+
+    .elements img {
+    width: 70%;
+   }
+    .box-model {
+        width: 100%;
+        padding: 10px 10px;
+    }
+
+    .boxer-1 {width: 100%;padding: 0;}
+
+    .boxer-2 {width: 100%;padding: 0;}
+    .three-box {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 1rem;
+        width: 100%
+    }
+
+    .box-1 {
+        width: 100%;
+        padding: 0;
+    }
+
+    .two-box {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        padding: 0;
+    }
+
+    .text {
+    width: 100%;
+}
+    .pizzalar {
+    width: 100%;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 0;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 20px;
+    
+   
+}
+
+.pizzalar .box {
+    width: 100%;
+    gap: 1rem;
+    
+}
+    .text h3 {
+    text-align: center;
+}
+
+    .items {
+    width: 100%;
+    justify-content: space-around;
+    align-items: stretch;
+    padding: 10px 10px;
+
+}
+    .item-icon-list {
+    gap: 2rem;
+    padding: 0;
+}
+
+.icons {
+    width: 100%;
+    padding: 10px 10px;
+}
+
+.icon-list {
+    display: flex;
+    justify-content: space-between;
+    padding:1rem 0;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.foot {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    padding-left: 3rem;
+    margin-top: 1rem;
+}
+
+.menu {
+    width: 100%;
+    padding: "1rem";
+}
+
+.instagram{
+    width: 100%;
+    margin-top: 2rem;
+}
+
+.write {
+    padding-left: 30px;
+    padding-top: 40px;
+}
+
+
+
+
+.bottom div{
+    padding: 0;
+    width: 100%;
+}
+
+.sonunda {
+    flex-direction: column;
+    margin-top: 3rem;
+}
+
+
+
 }

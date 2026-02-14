@@ -1,5 +1,5 @@
 export default function Piece(props) {
-  const { pizzaInfo, clickEvent, pricewilladd, pizzatotalpr, isvalid } = props;
+  const { pizzaInfo, clickEvent, priceadded, pizzatotalpr, isvalid } = props;
   return (
     <div
       style={{
@@ -53,21 +53,20 @@ export default function Piece(props) {
               display: "flex",
               flexDirection: "row",
               justifyContent: "space-between",
+              color: "grey",
             }}
           >
-            Seçimler <span>{pricewilladd * 5} tl</span>
+            Seçimler <span>{pizzaInfo.addedprice} tl</span>
           </p>
           <p
             style={{
               display: "flex",
               flexDirection: "row",
               justifyContent: "space-between",
+              color: "red",
             }}
           >
-            Toplam{" "}
-            <span>
-              {(pizzatotalpr + pricewilladd * 5) * pizzaInfo.piece} tl
-            </span>
+            Toplam <span>{pizzaInfo.totalprice} tl</span>
           </p>
         </div>
 

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import reactLogo from "./assets/react.svg";
 import workintech from "/workintech.svg";
-import "./App.css";
+
 import logo from "./assets/iteration-1/logo.svg";
 import homeBanner from "./assets/iteration-1/home-banner.png";
 import Header from "./components/Header";

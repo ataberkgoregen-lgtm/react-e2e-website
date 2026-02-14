@@ -13,7 +13,7 @@ export default function Comment(props) {
           id="comment"
           type="textarea"
           style={{
-            width: "350px",
+            width: "100%",
             border: "1px solid grey",
             borderRadius: "0.3rem",
             height: "45px",

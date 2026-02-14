@@ -4,7 +4,7 @@ import logo from "/src/assets/iteration-1/logo.svg";
 import styled from "styled-components";
 import Size from "./Size";
 import Matterial from "./Matterial";
-
+import Picture from "./Picture";
 import Comment from "./Comment";
 import Piece from "./Piece";
 import Title from "./Title";
@@ -13,15 +13,16 @@ const Form = styled.form`
   margin-top: 1rem;
   display: flex;
   flex-direction: column;
-  width: 350px;
+  width: 100%;
   margin: auto;
+  border: 1px solid red;
+  background-color: white;
 `;
 
 const Image = styled.div`
-  height: 20vh;
   background-color: #ce2829;
   margin: 0;
-  padding: 0;
+  padding: 1rem 0;
   width: 100%;
   display: flex;
   justify-content: center;
@@ -33,6 +34,7 @@ const Wrap = styled.div`
   height: 100%;
   width: 100%;
   box-sizing: border-box;
+  border: 1px solid red;
 `;
 
 const initialForm = {
@@ -43,14 +45,22 @@ const initialForm = {
   piece: 1,
   price: 85,
   totalprice: 0,
+  addedprice: 0,
 };
 
 export default function Pizzaform(props) {
   const { changePage } = props;
   const [isvalid, setIsValid] = useState(true);
   const [pizzaInfo, setPizzaInfo] = useState(initialForm);
+  const pricewilladd = pizzaInfo.matterial.length;
 
   useEffect(() => {
+    setPizzaInfo((prev) => ({
+      ...prev,
+      addedprice: pricewilladd * 5,
+      totalprice: (prev.price + pricewilladd * 5) * pizzaInfo.piece,
+    }));
+
     const isMaterialValid =
       pizzaInfo.matterial.length > 3 && pizzaInfo.matterial.length <= 10;
     const isSizeSelected = pizzaInfo.size !== "";
@@ -60,10 +70,10 @@ export default function Pizzaform(props) {
     } else {
       setIsValid(true);
     }
-  }, [pizzaInfo.matterial]);
+  }, [pizzaInfo.matterial, pizzaInfo.piece]);
 
-  const pricewilladd = pizzaInfo.matterial.length;
   console.log(pricewilladd);
+
   function changeHandler(event) {
     const { value, name, type, checked } = event.target;
 
@@ -103,6 +113,7 @@ export default function Pizzaform(props) {
   }
 
   function submitHandler(event) {
+    const { value, name } = event.target;
     event.preventDefault();
     changePage("success");
   }
@@ -129,99 +140,194 @@ export default function Pizzaform(props) {
       <Image>
         <div
           style={{
-            height: "70%",
-            width: "350px",
+            width: "40%",
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
             flexDirection: "column",
-            marginTop: "1rem",
           }}
         >
           <img src={logo} alt="" />
         </div>
-        <div
-          style={{
-            display: "flex",
-            textDecoration: "none",
-            color: "#5F5F5F",
-            height: "30%",
-            width: "350px",
-            paddingBottom: "1rem",
-            paddingLeft: "0",
-          }}
-        >
-          <a
-            style={{
-              textDecoration: "none",
-              color: "#5F5F5F",
-              marginTop: "auto",
-            }}
-            href=""
-            onClick={clickHandler}
-          >
-            Anasayfa-
-          </a>
-
-          <a
-            style={{
-              textDecoration: "none",
-              color: "#5F5F5F",
-              marginTop: "auto",
-            }}
-            href=""
-            onClick={clickHandler}
-          >
-            Seçenekler
-          </a>
-          <a
-            style={{
-              textDecoration: "none",
-              color: "white",
-              marginTop: "auto",
-            }}
-            href=""
-            onClick={clickHandler}
-          >
-            - Sipariş Oluştur
-          </a>
-        </div>
       </Image>
+
       <Form name="size" onSubmit={submitHandler}>
-        <Title></Title>
+        <div style={{ backgroundColor: "#FAF7F2", margin: "auto" }}>
+          <Picture></Picture>
 
-        <Size changeHandler={changeHandler} pizzaInfo={pizzaInfo}></Size>
-
-        <Matterial
-          changeHandler={changeHandler}
-          pizzaInfo={pizzaInfo}
-        ></Matterial>
-
-        <Comment changeHandler={changeHandler}></Comment>
-
-        <div
-          style={{
-            width: "350px",
-          }}
-        >
-          <span
+          <div
             style={{
-              borderBottom: "0.6px solid grey",
-              width: "350px",
-              display: "block",
-              marginTop: "1rem",
+              display: "flex",
+              textDecoration: "none",
+              color: "#5F5F5F",
+              height: "20%",
+              width: "40%",
+              paddingBottom: "1rem",
+              paddingLeft: "0",
+              paddingTop: "1rem",
+              margin: "auto",
             }}
-          ></span>
+          >
+            <a
+              style={{
+                textDecoration: "none",
+                color: "#5F5F5F",
+                marginTop: "auto",
+              }}
+              href=""
+              onClick={clickHandler}
+            >
+              Anasayfa-
+            </a>
+
+            <a
+              style={{
+                textDecoration: "none",
+                color: "#5F5F5F",
+                marginTop: "auto",
+              }}
+              href=""
+              onClick={clickHandler}
+            >
+              Seçenekler
+            </a>
+            <a
+              style={{
+                textDecoration: "none",
+                color: "red",
+                marginTop: "auto",
+                whiteSpace: "nowrap",
+              }}
+              href=""
+              onClick={clickHandler}
+            >
+              - Sipariş Oluştur
+            </a>
+          </div>
+
+          <Title></Title>
         </div>
 
-        <Piece
-          pizzaInfo={pizzaInfo}
-          clickEvent={clickEvent}
-          pricewilladd={pricewilladd}
-          pizzatotalpr={pizzaInfo.price}
-          isvalid={isvalid}
-        ></Piece>
+        <div style={{ backgroundColor: "white", width: "40%", margin: "auto" }}>
+          <Size changeHandler={changeHandler} pizzaInfo={pizzaInfo}></Size>
+
+          <Matterial
+            changeHandler={changeHandler}
+            pizzaInfo={pizzaInfo}
+          ></Matterial>
+
+          <Comment changeHandler={changeHandler}></Comment>
+
+          <div
+            style={{
+              width: "100%",
+            }}
+          >
+            <span
+              style={{
+                borderBottom: "0.6px solid grey",
+                width: "100%",
+                display: "block",
+                marginTop: "1rem",
+              }}
+            ></span>
+          </div>
+
+          <Piece
+            pizzaInfo={pizzaInfo}
+            clickEvent={clickEvent}
+            priceadded={pizzaInfo.addedprice}
+            pizzatotalpr={pizzaInfo.totalprice}
+            isvalid={isvalid}
+          ></Piece>
+        </div>
       </Form>
+      <footer>
+        <div className="foot">
+          <div className="iletisim">
+            <ul className="iletisim-bilgileri">
+              <img
+                src="/images/iteration-2-images/footer/logo-footer.svg"
+                alt=""
+              />
+              <li>
+                <img
+                  src="/images/iteration-2-images/footer/icons/icon-1.png"
+                  alt=""
+                />
+                341 Londonderry Road, <br />
+                Istanbul Türkiye
+              </li>
+              <li>
+                <img
+                  src="/images/iteration-2-images/footer/icons/icon-2.png"
+                  alt=""
+                />
+                aciktim@teknolojikyemekler.com
+              </li>
+              <li>
+                <img
+                  src="/images/iteration-2-images/footer/icons/icon-3.png"
+                  alt=""
+                />
+                +90 216 123 45 67
+              </li>
+            </ul>
+          </div>
+          <div className="sonunda">
+            <div className="menu">
+              <h3>Hot Menu</h3>
+              <ul>
+                <li>Terminal Pizza</li>
+                <li>5 kişilik Hackathlon Pizza</li>
+                <li>useEffect Tavuklu Pizza</li>
+                <li>Beyaz Console Frosty</li>
+                <li>Testler Geçti Mutlu Burger</li>
+                <li>Position Absolute Acı Burger</li>
+              </ul>
+            </div>
+            <div className="instagram">
+              <h3>Instagram</h3>
+              <div className="img-par">
+                <img
+                  src="/images/iteration-2-images/footer/insta/li-0.png"
+                  alt=""
+                />
+                <img
+                  src="/images/iteration-2-images/footer/insta/li-1.png"
+                  alt=""
+                />
+
+                <img
+                  src="/images/iteration-2-images/footer/insta/li-2.png"
+                  alt=""
+                />
+
+                <img
+                  src="/images/iteration-2-images/footer/insta/li-3.png"
+                  alt=""
+                />
+
+                <img
+                  src="/images/iteration-2-images/footer/insta/li-4.png"
+                  alt=""
+                />
+
+                <img
+                  src="/images/iteration-2-images/footer/insta/li-5.png"
+                  alt=""
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className="bottom">
+          <div>
+            <p>© 2023 Teknolojik Yemekler.</p>
+            <i className="fa-brands fa-twitter"></i>
+          </div>
+        </div>
+      </footer>
     </Wrap>
   );
 }
