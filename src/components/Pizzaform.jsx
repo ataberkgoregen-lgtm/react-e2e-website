@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-
+import axios from "axios";
 import logo from "/src/assets/iteration-1/logo.svg";
 import styled from "styled-components";
 import Size from "./Size";
@@ -15,7 +15,6 @@ const Form = styled.form`
   flex-direction: column;
   width: 100%;
   margin: auto;
-  border: 1px solid red;
   background-color: white;
 `;
 
@@ -39,7 +38,6 @@ const Wrap = styled.div`
 export default function Pizzaform(props) {
   const { changePage, pizzaInfo, setPizzaInfo } = props;
   const [isvalid, setIsValid] = useState(true);
-
   const pricewilladd = pizzaInfo.matterial.length;
 
   useEffect(() => {
@@ -103,7 +101,19 @@ export default function Pizzaform(props) {
   function submitHandler(event) {
     const { value, name } = event.target;
     event.preventDefault();
-    changePage("success");
+    axios
+      .get("https://reqres.in/api/users?page=2", {
+        headers: {
+          "x-api-key": import.meta.env.VITE_REQRES_API_KEY,
+        },
+      })
+      .then((response) => {
+        console.log(response.data);
+        changePage("success");
+      })
+      .catch((error) => {
+        console.error(error.response?.data || error.message);
+      });
   }
 
   function clickEvent(event) {

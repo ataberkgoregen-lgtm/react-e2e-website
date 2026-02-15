@@ -14,9 +14,10 @@ export default function Comment(props) {
           type="textarea"
           style={{
             width: "100%",
-            border: "1px solid grey",
+            border: "0",
             borderRadius: "0.3rem",
             height: "45px",
+            backgroundColor: "#FAF7F2",
           }}
           placeholder="   Siparişine eklemek istediğin bir not var mı?"
         />
