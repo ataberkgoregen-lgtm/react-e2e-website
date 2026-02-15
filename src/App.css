@@ -68,6 +68,60 @@ h2 {
     
 }
 
+.size-options {
+    display: flex;
+    gap: 20px;
+}
+
+.size-option input {
+  display: none;
+
+}
+
+.size-option span {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: #f4e9d7;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-weight: bold;
+  transition: 0.2s;
+}
+
+.size-option input:checked + span {
+  background-color: #FDC913;
+  color: black;
+}
+
+.hamur {
+    background-color: #f4e9d7;
+    padding: 0.4rem;
+    width: 250px;
+    border: none;
+    border-radius: 0.3rem;
+    height: 50px;
+}
+
+.matDiv {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.malzeme {
+    display: inline-block;
+    width: 35px;
+    height: 35px;
+    accent-color: #FDC913;
+}
+
+
+
+
 
 .main-section {
     width: 100%;

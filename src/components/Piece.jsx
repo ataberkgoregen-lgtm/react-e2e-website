@@ -13,7 +13,7 @@ export default function Piece(props) {
       <div>
         <button
           name="reduce"
-          style={{ backgroundColor: "#FDC913" }}
+          style={{ backgroundColor: "#FAF7F2" }}
           onClick={clickEvent}
           type="button"
         >
@@ -22,15 +22,16 @@ export default function Piece(props) {
         <span
           style={{
             padding: "0.5rem 1rem",
-            border: "1px solid grey",
+
             borderRadius: "4px",
+            backgroundColor: "#FAF7F2",
           }}
         >
           {pizzaInfo.piece}
         </span>
         <button
           name="increase"
-          style={{ backgroundColor: "#FDC913" }}
+          style={{ backgroundColor: "#FAF7F2" }}
           onClick={clickEvent}
           type="button"
         >
@@ -42,8 +43,9 @@ export default function Piece(props) {
           display: "flex",
           flexDirection: "column",
           gap: "0.3rem",
-          border: "1px solid grey",
+
           borderRadius: "0.6rem",
+          backgroundColor: "#FAF7F2",
         }}
       >
         <div style={{ padding: "20px" }}>

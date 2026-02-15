@@ -9,50 +9,58 @@ export default function Size(props) {
         <h3>
           Boyut Seç <span style={{ color: "red" }}>*</span>
         </h3>
-        <label htmlFor="small">
-          <input
-            type="radio"
-            name="size"
-            id="small"
-            value="small"
-            onChange={changeHandler}
-          />
-          Küçük
-        </label>
-        <label htmlFor="medium">
-          <input
-            type="radio"
-            name="size"
-            id="medium"
-            value="medium"
-            onChange={changeHandler}
-          />
-          Orta
-        </label>
-        <label htmlFor="large">
-          <input
-            type="radio"
-            name="size"
-            id="large"
-            value="large"
-            onChange={changeHandler}
-          />
-          Büyük
-        </label>
+        <div className="size-options">
+          <label className="size-option" htmlFor="small">
+            <input
+              type="radio"
+              name="size"
+              id="small"
+              value="S"
+              checked={pizzaInfo.size === "S"}
+              onChange={changeHandler}
+            />
+            <span>S</span>
+          </label>
+          <label className="size-option" htmlFor="medium">
+            <input
+              type="radio"
+              name="size"
+              id="medium"
+              value="M"
+              checked={pizzaInfo.size === "M"}
+              onChange={changeHandler}
+            />
+            <span>M</span>
+          </label>
+          <label className="size-option" htmlFor="large">
+            <input
+              type="radio"
+              name="size"
+              id="large"
+              value="L"
+              checked={pizzaInfo.size === "L"}
+              onChange={changeHandler}
+            />
+            <span>L</span>
+          </label>
+        </div>
+
         {pizzaInfo.size === "" && (
           <p style={{ color: "red" }}>Boyut seçmediniz*</p>
         )}
       </div>
+
       <div>
         <h3>
           Hamur Seç <span style={{ color: "red" }}>*</span>
         </h3>
         <select
+          className="hamur"
           name="pastryType"
           style={{ marginTop: "1rem" }}
           onChange={changeHandler}
         >
-          <option value="Hamur Kalınlığı">Hamur Kalınlığı</option>
+          <option value="Hamur Kalınlığı">---Hamur Kalınlığı Seç---</option>
           <option value="thick">Kalın Hamur</option>
           <option value="thin">İnce Hamur</option>
         </select>
