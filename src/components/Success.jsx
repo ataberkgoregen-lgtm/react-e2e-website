@@ -80,9 +80,8 @@ export default function Success(props) {
           alignContent: "center",
 
           margin: "2rem auto",
-          textAlign: "center",
-          flexDirection: "column",
           textAlign: "start",
+          flexDirection: "column",
         }}
       >
         <p>

@@ -10,7 +10,7 @@ export default function Size(props) {
           Boyut Seç <span style={{ color: "red" }}>*</span>
         </h3>
         <div className="size-options">
-          <label className="size-option" htmlFor="small">
+          <label className="size-option" id="fS" htmlFor="small">
             <input
               type="radio"
               name="size"
@@ -21,7 +21,7 @@ export default function Size(props) {
             />
             <span>S</span>
           </label>
-          <label className="size-option" htmlFor="medium">
+          <label className="size-option" id="fM" htmlFor="medium">
             <input
               type="radio"
               name="size"
@@ -32,7 +32,7 @@ export default function Size(props) {
             />
             <span>M</span>
           </label>
-          <label className="size-option" htmlFor="large">
+          <label className="size-option" id="fL" htmlFor="large">
             <input
               type="radio"
               name="size"
@@ -46,7 +46,9 @@ export default function Size(props) {
         </div>
 
         {pizzaInfo.size === "" && (
-          <p style={{ color: "red" }}>Boyut seçmediniz*</p>
+          <p className="selective" style={{ color: "red" }}>
+            Boyut seçmediniz*
+          </p>
         )}
       </div>
 
